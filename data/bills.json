@@ -1,0 +1,34 @@
+[
+  {
+    "bill_id": "BILL001",
+    "customer_id": "CUS002",
+    "billing_period": "2026-08",
+    "amount_due": 4250.00,
+    "due_date": "2026-09-20",
+    "status": "unpaid"
+  },
+  {
+    "bill_id": "BILL002",
+    "customer_id": "CUS005",
+    "billing_period": "2026-08",
+    "amount_due": 7850.00,
+    "due_date": "2026-09-10",
+    "status": "overdue"
+  },
+  {
+    "bill_id": "BILL003",
+    "customer_id": "CUS001",
+    "billing_period": "2026-08",
+    "amount_due": 0.00,
+    "due_date": "2026-09-15",
+    "status": "paid"
+  },
+  {
+    "bill_id": "BILL004",
+    "customer_id": "CUS004",
+    "billing_period": "2026-08",
+    "amount_due": 1350.00,
+    "due_date": "2026-09-25",
+    "status": "unpaid"
+  }
+]

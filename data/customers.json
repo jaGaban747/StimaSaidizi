@@ -1,0 +1,68 @@
+[
+  {
+    "customer_id": "CUS001",
+    "name": "Amina Kamau",
+    "county": "Nairobi",
+    "area": "Kasarani",
+    "location_class": "urban",
+    "preferred_language": "sw",
+    "customer_type": "residential",
+    "meter_or_account_ref": "MTR100001",
+    "created_at": "2026-08-01T09:00:00"
+  },
+  {
+    "customer_id": "CUS002",
+    "name": "Brian Kiptoo",
+    "county": "Nakuru",
+    "area": "Naivasha",
+    "location_class": "urban",
+    "preferred_language": "en",
+    "customer_type": "commercial",
+    "meter_or_account_ref": "ACC100002",
+    "created_at": "2026-08-03T11:30:00"
+  },
+  {
+    "customer_id": "CUS003",
+    "name": "Faith Wanjiku",
+    "county": "Kiambu",
+    "area": "Githunguri",
+    "location_class": "rural",
+    "preferred_language": "sw",
+    "customer_type": "residential",
+    "meter_or_account_ref": "MTR100003",
+    "created_at": "2026-08-05T14:15:00"
+  },
+  {
+    "customer_id": "CUS004",
+    "name": "David Ochieng",
+    "county": "Migori",
+    "area": "Awendo",
+    "location_class": "rural",
+    "preferred_language": "en",
+    "customer_type": "residential",
+    "meter_or_account_ref": "MTR100004",
+    "created_at": "2026-08-08T08:45:00"
+  },
+  {
+    "customer_id": "CUS005",
+    "name": "Mary Njeri",
+    "county": "Nairobi",
+    "area": "Westlands",
+    "location_class": "urban",
+    "preferred_language": "en",
+    "customer_type": "commercial",
+    "meter_or_account_ref": "ACC100005",
+    "created_at": "2026-08-10T16:20:00"
+  },
+  {
+    "customer_id": "CUS006",
+    "name": "John Mwangi",
+    "county": "Kiambu",
+    "area": "Ruiru",
+    "location_class": "urban",
+    "preferred_language": "sw",
+    "customer_type": "residential",
+    "meter_or_account_ref": "MTR100006",
+    "created_at": "2026-08-12T10:10:00"
+  }
+]

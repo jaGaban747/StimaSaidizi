@@ -1,0 +1,29 @@
+[
+  {
+    "outage_id": "OUT001",
+    "area": "Kasarani",
+    "county": "Nairobi",
+    "start_time": "2026-09-15T07:30:00",
+    "estimated_restoration": "2026-09-15T13:00:00",
+    "status": "active",
+    "outage_type": "unplanned"
+  },
+  {
+    "outage_id": "OUT002",
+    "area": "Githunguri",
+    "county": "Kiambu",
+    "start_time": "2026-09-14T09:00:00",
+    "estimated_restoration": "2026-09-14T16:00:00",
+    "status": "restored",
+    "outage_type": "planned"
+  },
+  {
+    "outage_id": "OUT003",
+    "area": "Ruiru",
+    "county": "Kiambu",
+    "start_time": "2026-09-15T18:15:00",
+    "estimated_restoration": "2026-09-15T23:30:00",
+    "status": "active",
+    "outage_type": "unplanned"
+  }
+]

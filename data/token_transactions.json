@@ -1,0 +1,34 @@
+[
+  {
+    "transaction_id": "TXN001",
+    "customer_id": "CUS001",
+    "amount": 500.00,
+    "transaction_time": "2026-09-15T08:15:00",
+    "payment_status": "successful",
+    "token_status": "issued"
+  },
+  {
+    "transaction_id": "TXN002",
+    "customer_id": "CUS003",
+    "amount": 1000.00,
+    "transaction_time": "2026-09-15T10:30:00",
+    "payment_status": "successful",
+    "token_status": "pending"
+  },
+  {
+    "transaction_id": "TXN003",
+    "customer_id": "CUS004",
+    "amount": 300.00,
+    "transaction_time": "2026-09-15T12:45:00",
+    "payment_status": "failed",
+    "token_status": "unavailable"
+  },
+  {
+    "transaction_id": "TXN004",
+    "customer_id": "CUS006",
+    "amount": 750.00,
+    "transaction_time": "2026-09-15T17:20:00",
+    "payment_status": "pending",
+    "token_status": "pending"
+  }
+]

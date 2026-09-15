@@ -1,0 +1,93 @@
+[
+  {
+    "case_id": "CASE001",
+    "customer_id": "CUS001",
+    "category": "outage",
+    "channel": "web_chat",
+    "language": "sw",
+    "created_at": "2026-09-15T08:00:00",
+    "updated_at": "2026-09-15T08:12:00",
+    "status": "resolved",
+    "resolution_time_minutes": 12,
+    "escalation_reason": null,
+    "summary": "Customer reported loss of power in Kasarani. Active area outage confirmed."
+  },
+  {
+    "case_id": "CASE002",
+    "customer_id": "CUS003",
+    "category": "token",
+    "channel": "web_chat",
+    "language": "en",
+    "created_at": "2026-09-15T10:40:00",
+    "updated_at": "2026-09-15T11:05:00",
+    "status": "escalated",
+    "resolution_time_minutes": null,
+    "escalation_reason": "Payment successful but token remains pending.",
+    "summary": "Customer paid for a prepaid token but has not received it."
+  },
+  {
+    "case_id": "CASE003",
+    "customer_id": "CUS005",
+    "category": "billing",
+    "channel": "web_chat",
+    "language": "en",
+    "created_at": "2026-09-15T13:15:00",
+    "updated_at": "2026-09-15T13:23:00",
+    "status": "resolved",
+    "resolution_time_minutes": 8,
+    "escalation_reason": null,
+    "summary": "Customer requested information about an overdue electricity bill."
+  },
+  {
+    "case_id": "CASE004",
+    "customer_id": "CUS004",
+    "category": "outage",
+    "channel": "web_chat",
+    "language": "en",
+    "created_at": "2026-09-15T15:30:00",
+    "updated_at": "2026-09-15T15:35:00",
+    "status": "escalated",
+    "resolution_time_minutes": null,
+    "escalation_reason": "No matching area outage found; possible isolated supply fault.",
+    "summary": "Customer reported loss of power while nearby customers still had electricity."
+  },
+  {
+    "case_id": "CASE005",
+    "customer_id": "CUS006",
+    "category": "token",
+    "channel": "web_chat",
+    "language": "sw",
+    "created_at": "2026-09-15T17:25:00",
+    "updated_at": "2026-09-15T17:25:00",
+    "status": "open",
+    "resolution_time_minutes": null,
+    "escalation_reason": null,
+    "summary": "Customer requested help with a prepaid token transaction that is still pending."
+  },
+  {
+    "case_id": "CASE006",
+    "customer_id": "CUS002",
+    "category": "billing",
+    "channel": "web_chat",
+    "language": "en",
+    "created_at": "2026-09-15T18:10:00",
+    "updated_at": "2026-09-15T18:18:00",
+    "status": "resolved",
+    "resolution_time_minutes": 8,
+    "escalation_reason": null,
+    "summary": "Customer requested the current outstanding bill amount and due date."
+  },
+  {
+    "case_id": "CASE007",
+    "customer_id": "CUS004",
+    "category": "outage",
+    "channel": "web_chat",
+    "language": "en",
+    "created_at": "2026-09-16T01:14:01",
+    "updated_at": "2026-09-16T01:18:12",
+    "status": "escalated",
+    "resolution_time_minutes": null,
+    "escalation_reason": "No matching area outage found; possible isolated supply fault.",
+    "summary": "Customer reports loss of power but no active area outage was found."
+  }
+]
