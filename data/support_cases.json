@@ -89,5 +89,18 @@
     "resolution_time_minutes": null,
     "escalation_reason": "No matching area outage found; possible isolated supply fault.",
     "summary": "Customer reports loss of power but no active area outage was found."
+  },
+  {
+    "case_id": "CASE008",
+    "customer_id": "CUS003",
+    "category": "token",
+    "channel": "web_chat",
+    "language": "en",
+    "created_at": "2026-09-16T20:23:32",
+    "updated_at": "2026-09-16T20:26:17",
+    "status": "escalated",
+    "resolution_time_minutes": null,
+    "escalation_reason": "Payment successful but prepaid token remains pending.",
+    "summary": "Customer reports successful payment but has not received the prepaid token."
   }
 ]
