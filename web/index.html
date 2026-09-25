@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StimaSaidizi | Electricity Support</title>
+</head>
+<body>
+    <main>
+        <h1>StimaSaidizi</h1>
+        <p>AI-assisted electricity customer support for Kenya.</p>
+        <p>
+            Ask about outages, prepaid-token transactions,
+            billing, or an unresolved support issue.
+        </p>
+        <small>
+            Educational prototype using synthetic utility records.
+            Not an official Kenya Power support channel.
+        </small>
+    </main>
+
+    <!-- IBM watsonx Orchestrate embedded chat -->
+    <script>
+      window.wxOConfiguration = {
+        orchestrationID: "3f4b1f2685554b6589adf27c4e99d777_a64a9435-f315-408e-a677-e055729b1861",
+        hostURL: "https://ca-tor.watson-orchestrate.cloud.ibm.com",
+        rootElementID: "root",
+        deploymentPlatform: "ibmcloud",
+        crn: "crn:v1:bluemix:public:watsonx-orchestrate:ca-tor:a/3f4b1f2685554b6589adf27c4e99d777:a64a9435-f315-408e-a677-e055729b1861::",
+        chatOptions: {
+          agentId: "d5149424-172e-4d80-82fd-02f4baab6e76"
+        }
+      };
+
+      setTimeout(function () {
+        const script = document.createElement("script");
+        script.src =
+          `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
+        script.addEventListener("load", function () {
+          wxoLoader.init();
+        });
+        document.head.appendChild(script);
+      }, 0);
+    </script>
+</body>
+<div id="root"></div>
+</html>
