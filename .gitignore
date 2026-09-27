@@ -222,3 +222,7 @@ __marimo__/
 .venv/
 __pycache__/
 .pytest_cache/
+
+# Google ADK local runtime files
+**/.adk/
+**/__pycache__/
