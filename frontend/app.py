@@ -254,7 +254,7 @@ if page == "Customer Support":
     with action:
         if st.button(
             "New chat",
-            use_container_width=True,
+            width="stretch",
             disabled=not st.session_state.customer_messages,
         ):
             reset_customer_chat()
@@ -277,23 +277,23 @@ if page == "Customer Support":
         with q1:
             outage_clicked = st.button(
                 "Report or check an outage",
-                use_container_width=True,
+                width="stretch",
             )
 
             token_clicked = st.button(
                 "Check a prepaid token",
-                use_container_width=True,
+                width="stretch",
             )
 
         with q2:
             bill_clicked = st.button(
                 "View billing information",
-                use_container_width=True,
+                width="stretch",
             )
 
             case_clicked = st.button(
                 "Follow up a support case",
-                use_container_width=True,
+                width="stretch",
             )
 
         quick_prompt = None
@@ -494,7 +494,7 @@ else:
 
         st.dataframe(
             display_cases,
-            use_container_width=True,
+            width="stretch",
             hide_index=True,
         )
 
@@ -520,7 +520,7 @@ else:
         if st.button(
             "New chat",
             key="manager_new_chat",
-            use_container_width=True,
+            width="stretch",
             disabled=not st.session_state.manager_messages,
         ):
             reset_manager_chat()
