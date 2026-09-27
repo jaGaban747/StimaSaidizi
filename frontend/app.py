@@ -5,9 +5,10 @@ from pathlib import Path
 import streamlit as st
 from dotenv import load_dotenv
 
-# ---------------------------------------------------------
+
+# =========================================================
 # Environment
-# ---------------------------------------------------------
+# =========================================================
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(PROJECT_ROOT / "agents" / "customer_support" / ".env")
@@ -34,20 +35,84 @@ APP_NAME = "stimasaidizi"
 USER_ID = "streamlit_user"
 
 
-# ---------------------------------------------------------
-# Page configuration
-# ---------------------------------------------------------
+# =========================================================
+# Page
+# =========================================================
 
 st.set_page_config(
     page_title="StimaSaidizi",
     page_icon="⚡",
     layout="wide",
+    initial_sidebar_state="expanded",
 )
 
 
-# ---------------------------------------------------------
-# ADK helpers
-# ---------------------------------------------------------
+# =========================================================
+# Small presentation layer
+# =========================================================
+
+st.markdown(
+    """
+    <style>
+        /* Reduce Streamlit's excessive top spacing */
+        .block-container {
+            padding-top: 3rem;
+            padding-bottom: 6rem;
+            max-width: 1200px;
+        }
+
+        /* More restrained page headings */
+        h1 {
+            letter-spacing: -0.035em;
+        }
+
+        h2, h3 {
+            letter-spacing: -0.02em;
+        }
+
+        /* Metric containers */
+        [data-testid="stMetric"] {
+            border: 1px solid #dde1e6;
+            padding: 1rem 1.1rem;
+            min-height: 112px;
+            background: #ffffff;
+        }
+
+        [data-testid="stMetricLabel"] {
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* Cleaner buttons */
+        .stButton > button {
+            min-height: 2.5rem;
+            font-weight: 500;
+        }
+
+        /* Sidebar identity */
+        section[data-testid="stSidebar"] h1 {
+            font-size: 1.45rem;
+            letter-spacing: -0.025em;
+        }
+
+        /* Reduce visual weight of captions */
+        [data-testid="stCaptionContainer"] {
+            color: #525252;
+        }
+
+        /* Chat input */
+        [data-testid="stChatInput"] {
+            border-radius: 0.25rem;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+
+# =========================================================
+# ADK
+# =========================================================
 
 def initialize_state():
     if "session_service" not in st.session_state:
@@ -88,6 +153,7 @@ async def ensure_session(session_id):
             session_id=session_id,
         )
     except Exception:
+        # Streamlit reruns frequently. An existing session is fine.
         pass
 
 
@@ -141,17 +207,15 @@ def reset_manager_chat():
 initialize_state()
 
 
-# ---------------------------------------------------------
+# =========================================================
 # Sidebar
-# ---------------------------------------------------------
+# =========================================================
 
 with st.sidebar:
-    st.title("⚡ StimaSaidizi")
+    st.title("StimaSaidizi")
+    st.caption("Customer Support & Service Operations")
 
-    st.caption(
-        "AI-powered electricity customer support "
-        "and service analytics."
-    )
+    st.write("")
 
     page = st.radio(
         "Workspace",
@@ -164,42 +228,113 @@ with st.sidebar:
     st.divider()
 
     st.caption(
-        "Educational prototype using synthetic utility data. "
-        "Not an official Kenya Power service."
+        "DEMONSTRATION ENVIRONMENT"
+    )
+    st.caption(
+        "Uses synthetic utility data. "
+        "StimaSaidizi is not an official Kenya Power service."
     )
 
 
-# ---------------------------------------------------------
-# Customer Support
-# ---------------------------------------------------------
+# =========================================================
+# Customer workspace
+# =========================================================
 
 if page == "Customer Support":
 
-    col1, col2 = st.columns([5, 1])
+    heading, action = st.columns([5, 1])
 
-    with col1:
+    with heading:
         st.title("Customer Support")
         st.caption(
-            "Get help with outages, prepaid tokens, "
-            "billing and support cases."
+            "Service enquiries, outage information, prepaid tokens, "
+            "billing and case management."
         )
 
-    with col2:
-        if st.button("New chat", use_container_width=True):
+    with action:
+        if st.button(
+            "New chat",
+            use_container_width=True,
+            disabled=not st.session_state.customer_messages,
+        ):
             reset_customer_chat()
             st.rerun()
 
-    st.info(
-        "This prototype uses synthetic customer and utility data."
+    st.divider()
+
+    # Purposeful empty state
+    if not st.session_state.customer_messages:
+        st.subheader("How can we assist?")
+
+        st.write(
+            "Select a common service request or describe your issue below."
+        )
+
+        st.write("")
+
+        q1, q2 = st.columns(2)
+
+        with q1:
+            outage_clicked = st.button(
+                "Report or check an outage",
+                use_container_width=True,
+            )
+
+            token_clicked = st.button(
+                "Check a prepaid token",
+                use_container_width=True,
+            )
+
+        with q2:
+            bill_clicked = st.button(
+                "View billing information",
+                use_container_width=True,
+            )
+
+            case_clicked = st.button(
+                "Follow up a support case",
+                use_container_width=True,
+            )
+
+        quick_prompt = None
+
+        if outage_clicked:
+            quick_prompt = (
+                "I want to report or check an electricity outage."
+            )
+        elif token_clicked:
+            quick_prompt = (
+                "I need help checking a prepaid token transaction."
+            )
+        elif bill_clicked:
+            quick_prompt = (
+                "I want to check my electricity bill."
+            )
+        elif case_clicked:
+            quick_prompt = (
+                "I want to follow up on an existing support case."
+            )
+
+        st.write("")
+        st.caption(
+            "StimaSaidizi only reports information available in the "
+            "demonstration dataset."
+        )
+
+    else:
+        quick_prompt = None
+
+        for message in st.session_state.customer_messages:
+            with st.chat_message(message["role"]):
+                st.markdown(message["content"])
+
+    typed_prompt = st.chat_input(
+        "Describe your service request..."
     )
 
-    for message in st.session_state.customer_messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+    prompt = typed_prompt or quick_prompt
 
-    if prompt := st.chat_input(
-        "Ask StimaSaidizi for help..."
-    ):
+    if prompt:
         st.session_state.customer_messages.append(
             {
                 "role": "user",
@@ -211,7 +346,7 @@ if page == "Customer Support":
             st.markdown(prompt)
 
         with st.chat_message("assistant"):
-            with st.spinner("Checking..."):
+            with st.spinner("Retrieving service information..."):
                 try:
                     response = run_agent(
                         st.session_state.customer_runner,
@@ -220,8 +355,8 @@ if page == "Customer Support":
                     )
                 except Exception:
                     st.error(
-                        "StimaSaidizi could not complete "
-                        "the request."
+                        "StimaSaidizi could not complete the request. "
+                        "Please try again."
                     )
                     st.stop()
 
@@ -234,21 +369,30 @@ if page == "Customer Support":
             }
         )
 
+        # Required for quick-action buttons so the page
+        # immediately transitions into conversation mode.
+        if quick_prompt:
+            st.rerun()
 
-# ---------------------------------------------------------
-# Manager Dashboard
-# ---------------------------------------------------------
+
+# =========================================================
+# Service Operations workspace
+# =========================================================
 
 else:
 
-    st.title("Manager Dashboard")
-
+    st.title("Service Operations")
     st.caption(
-        "Customer-support performance and operational "
-        "insights from synthetic data."
+        "Customer support performance, case activity and "
+        "operational analytics."
     )
 
-    # Current metrics
+    st.divider()
+
+    # -----------------------------------------------------
+    # KPIs
+    # -----------------------------------------------------
+
     total = total_cases()
     resolved_rate = resolution_rate()
     escalated_rate = escalation_rate()
@@ -257,56 +401,82 @@ else:
     col1, col2, col3, col4 = st.columns(4)
 
     col1.metric(
-        "Total Cases",
+        "Total cases",
         total,
     )
 
     col2.metric(
-        "Resolution Rate",
+        "Resolution rate",
         f"{resolved_rate:.1f}%",
     )
 
     col3.metric(
-        "Escalation Rate",
+        "Escalation rate",
         f"{escalated_rate:.1f}%",
     )
 
     col4.metric(
-        "Avg. Resolution",
+        "Avg. resolution",
         f"{avg_time:.1f} min",
     )
 
-    st.divider()
+    st.write("")
 
-    # Case breakdown
+    # -----------------------------------------------------
+    # Distribution
+    # -----------------------------------------------------
+
+    st.subheader("Case Distribution")
+
     left, right = st.columns(2)
 
-    with left:
-        st.subheader("Cases by Category")
+    category_data = cases_by_category()
+    status_data = cases_by_status()
 
-        category_data = cases_by_category()
+    with left:
+        st.caption("BY CATEGORY")
 
         if category_data:
-            st.bar_chart(category_data)
+            st.bar_chart(
+                category_data,
+                height=230,
+            )
         else:
             st.info("No category data available.")
 
     with right:
-        st.subheader("Cases by Status")
-
-        status_data = cases_by_status()
+        st.caption("BY STATUS")
 
         if status_data:
-            st.bar_chart(status_data)
+            st.bar_chart(
+                status_data,
+                height=230,
+            )
         else:
             st.info("No status data available.")
 
     st.divider()
 
+    # -----------------------------------------------------
     # Unresolved cases
-    st.subheader("Unresolved Cases")
+    # -----------------------------------------------------
 
     unresolved = unresolved_cases()
+
+    unresolved_heading, unresolved_count = st.columns([5, 1])
+
+    with unresolved_heading:
+        st.subheader("Unresolved Cases")
+        st.caption(
+            "Open and escalated customer-support cases "
+            "requiring further review."
+        )
+
+    with unresolved_count:
+        st.metric(
+            "Current",
+            len(unresolved),
+        )
 
     if unresolved:
         display_cases = []
@@ -327,36 +497,47 @@ else:
             use_container_width=True,
             hide_index=True,
         )
+
     else:
-        st.success("No unresolved cases.")
+        st.success("There are currently no unresolved cases.")
 
     st.divider()
 
+    # -----------------------------------------------------
     # Mkurugenzi
-    header, button = st.columns([5, 1])
+    # -----------------------------------------------------
 
-    with header:
-        st.subheader("Ask Mkurugenzi")
+    manager_heading, manager_action = st.columns([5, 1])
+
+    with manager_heading:
+        st.subheader("Mkurugenzi")
         st.caption(
-            "Ask questions about current support metrics "
-            "and unresolved cases."
+            "Operational assistant for support metrics "
+            "and unresolved case analysis."
         )
 
-    with button:
+    with manager_action:
         if st.button(
             "New chat",
             key="manager_new_chat",
             use_container_width=True,
+            disabled=not st.session_state.manager_messages,
         ):
             reset_manager_chat()
             st.rerun()
+
+    if not st.session_state.manager_messages:
+        st.caption(
+            "Example: Summarise current customer-support performance "
+            "and highlight cases requiring review."
+        )
 
     for message in st.session_state.manager_messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
     if prompt := st.chat_input(
-        "Ask Mkurugenzi about support performance..."
+        "Ask Mkurugenzi about service performance..."
     ):
         st.session_state.manager_messages.append(
             {
@@ -369,7 +550,7 @@ else:
             st.markdown(prompt)
 
         with st.chat_message("assistant"):
-            with st.spinner("Analysing support data..."):
+            with st.spinner("Analysing operational data..."):
                 try:
                     response = run_agent(
                         st.session_state.manager_runner,
@@ -378,8 +559,8 @@ else:
                     )
                 except Exception:
                     st.error(
-                        "Mkurugenzi could not complete "
-                        "the request."
+                        "Mkurugenzi could not complete the request. "
+                        "Please try again."
                     )
                     st.stop()
 

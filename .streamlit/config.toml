@@ -1,0 +1,35 @@
+[theme]
+base = "light"
+
+# Enterprise typography
+font = "Arial, sans-serif"
+headingFont = "Arial, sans-serif"
+codeFont = "monospace"
+
+baseFontSize = 15
+baseFontWeight = 400
+headingFontWeights = [700, 650, 600, 600, 600, 600]
+
+# Restrained enterprise palette
+primaryColor = "#0F62FE"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F4F4F4"
+textColor = "#161616"
+borderColor = "#DDE1E6"
+
+# Less rounded / less consumer-app looking
+baseRadius = "0.25rem"
+buttonRadius = "0.25rem"
+
+# Dashboard metrics
+metricValueFontSize = "2rem"
+metricValueFontWeight = 600
+
+showSidebarBorder = true
+
+[theme.sidebar]
+backgroundColor = "#F4F4F4"
+textColor = "#161616"
+borderColor = "#DDE1E6"
+font = "Arial, sans-serif"
+headingFont = "Arial, sans-serif"
