@@ -6,6 +6,12 @@ StimaSaidizi demonstrates how conversational AI can support recurring electricit
 
 The project was developed as a solo **IBM Phase 3 Cornerstone Project** under the **Product Development pathway**, within the **Energy & Manufacturing** sector.
 
+### Live Demo
+
+**StimaSaidizi is deployed on Streamlit Community Cloud:**
+
+[Launch StimaSaidizi](https://stimasaidizi-3xf7dh9e52sstskjqn6exv.streamlit.app/)
+
 > **Demonstration environment:** StimaSaidizi uses synthetic customer, billing, token, outage and support-case data. It is not an official Kenya Power service and does not connect to live utility systems.
 
 ---
