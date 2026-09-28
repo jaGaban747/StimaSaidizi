@@ -16,6 +16,10 @@ The project was developed as a solo **IBM Phase 3 Cornerstone Project** under th
 
 ---
 
+### Project Resources
+
+- **[Final Project Report](docs/report/StimaSaidizi_Final_Report.pdf)**
+
 ## StimaSaidizi Workspaces
 
 <p align="center">
@@ -520,10 +524,11 @@ The project's central design principle is:
 
 ---
 
+
 ## Author
 
 **Leon Changara Chemwor Odari**
 
-IBM Phase 3 Cornerstone Project  
+IBM Phase 3 Cornerstone Project  September 2026
 Product Development — Energy & Manufacturing  
 Kenya
